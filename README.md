@@ -4,6 +4,14 @@
 
 ## 🛠️ Setup
 
+### Dependency
+```bash
+pip install numpy==1.26.4
+pip install --no-cache-fir torch==2.4.0 torchaudio==2.4.0 torchvision==0.19.0
+python3 -C "import torch; print('PyTorch:', torch.__version__)" # Check version (PyTorch: 2.4.0+cu121)
+```
+
+
 ## 👤 Authors
 
 - **[iHaruruki](https://github.com/iHaruruki)** — Main author & maintainer

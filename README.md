@@ -2,6 +2,14 @@
 
 ## 🚀 Overview
 
+## :mag_right: Structure
+
+| Application Layer | PyTorch / TensorFlow |
+| Library Layer     | cuDNN |
+| Runtime Layer     | CUDA Toolkit |
+| Driver Layer      | NVIDIA Driver |
+| Hardware Layer    | GPU Hardware |
+
 ## 🛠️ Setup
 
 ### Dependency

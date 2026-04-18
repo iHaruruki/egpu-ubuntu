@@ -4,6 +4,8 @@
 
 ## :mag_right: Structure
 
+| | | 
+| --- | --- |
 | Application Layer | PyTorch / TensorFlow |
 | Library Layer     | cuDNN |
 | Runtime Layer     | CUDA Toolkit |

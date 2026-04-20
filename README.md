@@ -1,6 +1,15 @@
 # egpu-ubuntu
 
 ## 🚀 Overview
+Install **NVIDIA Driver**, **NVIDIA CUDA TOOLKIT**, **NVIDIA cuDNN**.
+
+## 💻 Verification environment
+| Types of parts | Model number |
+| --- | --- |
+| Graphics Cards | GeForce RTX 3070 Ti |
+| eGPU | Razer core x |
+| CPU | Intel® Core™ i7-1260P |
+| OS | Ubuntu22.04 |
 
 ## :mag_right: Structure
 

@@ -7,7 +7,7 @@
 | | | 
 | --- | --- |
 | Application Layer | PyTorch / TensorFlow |
-| Library Layer     | cuDNN |
+| Library Layer     | cuDNN / cuBLAS / TensorRT |
 | Runtime Layer     | CUDA Toolkit |
 | Driver Layer      | NVIDIA Driver |
 | Hardware Layer    | GPU Hardware |
@@ -28,6 +28,7 @@ python3 -C "import torch; print('PyTorch:', torch.__version__)" # Check version 
 
 ## 📚 References
 - [CUDA Toolkit 13.0 Downloads](https://developer.nvidia.com/cuda-13-0-0-download-archive)
+- [NVIDIA CUDA-X](https://www.nvidia.com/ja-jp/technologies/cuda-x/)
 - [GPUを使った機械学習の環境を作るためにすること/しないこと（Ubuntu 22.04/24.04編）](https://zenn.dev/yuyakato/articles/6915e735bc6aa5)
 - [Ubuntu 22.04マシンでGPUを使えるようにする](https://qiita.com/tmasada/items/f77808c870c829c076fa)
 - [GPU環境構築からyolo_rosを動かすまで その1](https://zenn.dev/nutechr/articles/2d2df996af2401)

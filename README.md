@@ -83,6 +83,7 @@ ubuntu-drivers devices
 ```
 <details>
 <summary>List of ubuntu-drivers devices</summary>
+
 ```bash
 ubuntu-drivers devices
 == /sys/devices/pci0000:00/0000:00:07.2/0000:2c:00.0/0000:2d:01.0/0000:2e:00.0 ==
@@ -123,6 +124,37 @@ sudo apt install nvidia-driver-xxx-xxxx
 ```bash
 sudo reboot
 ```
+
+### GPUの状態を確認
+<details>
+<summary>List of ubuntu-drivers devices</summary>
+
+```bash
+nvidia-smi
+```
+```bash
+Tue Apr 21 13:56:33 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.126.09             Driver Version: 580.126.09     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3070 Ti     Off |   00000000:2E:00.0 Off |                  N/A |
+|  0%   32C    P8              9W /  290W |     181MiB /   8192MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            3564    C+G   ...c/gnome-remote-desktop-daemon        163MiB |
++-----------------------------------------------------------------------------------------+
+```
+</details>
 
 ### Dependency
 ```bash

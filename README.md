@@ -157,6 +157,50 @@ Tue Apr 21 13:56:33 2026
 ```
 </details>
 
+### NVIDIA CUDA Toolkit のインストール
+1. Ubuntuのバージョンを確認
+```bash
+uname -m  # アーキテクチャ（x86_64等）を確認
+lsb_release -a  # ディストリビューション名とバージョンを確認
+```
+<details>
+<summary>nvidia-smi</summary>
+
+```bash
+$ uname -m
+x86_64
+
+$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.5 LTS
+Release:	22.04
+Codename:	jammy
+```
+</details>
+
+2. CUDA Toolkit 13.0 Downloads  
+Open link. [CUDA Toolkit 13.0 Downloads](https://developer.nvidia.com/cuda-13-0-0-download-archive)
+
+3. Select Target Platform  
+- Operating System: Linux
+- Architecture: x86_64
+- Distribution: Ubuntu
+- Version: 22.04
+- Installer Type: deb(local)
+
+4. Install
+Installation Instructions:
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
+sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/13.0.0/local_installers/cuda-repo-ubuntu2204-13-0-local_13.0.0-580.65.06-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2204-13-0-local_13.0.0-580.65.06-1_amd64.deb
+sudo cp /var/cuda-repo-ubuntu2204-13-0-local/cuda-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-13-0
+```
+
 ### Dependency
 ```bash
 pip install numpy==1.26.4

@@ -158,6 +158,11 @@ Tue Apr 21 13:56:33 2026
 </details>
 
 ### NVIDIA CUDA Toolkit のインストール
+
+> [!TIP]
+> NVIDIA Official Documentation.  
+> [NVIDIA CUDA Toolkit](https://developer.nvidia.com/cuda/toolkit)  
+
 1. Ubuntuのバージョンを確認
 ```bash
 uname -m  # アーキテクチャ（x86_64等）を確認
@@ -199,6 +204,28 @@ sudo dpkg -i cuda-repo-ubuntu2204-13-0-local_13.0.0-580.65.06-1_amd64.deb
 sudo cp /var/cuda-repo-ubuntu2204-13-0-local/cuda-*-keyring.gpg /usr/share/keyrings/
 sudo apt-get update
 sudo apt-get -y install cuda-toolkit-13-0
+```
+
+5. 環境変数の設定
+```bash
+export CUDA_HOME=/usr/local/cuda-13.0
+echo 'export CUDA_HOME=/usr/local/cuda-13.0' >> ${HOME}/.bashrc
+export LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64:${LD_LIBRARY_PATH}
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64:${LD_LIBRARY_PATH}' >> ${HOME}/.bashrc
+export PATH=/usr/local/cuda-13.0/bin:${PATH}
+echo 'export PATH=/usr/local/cuda-11.8/bin:${PATH}' >> ${HOME}/.bashrc
+source ${HOME}/.bashrc
+```
+
+6. インストールと設定の確認
+```bash
+cat /usr/local/cuda-13.0/version.json
+nvcc --version
+```
+
+7. 再起動
+```bash
+sudo /sbin/shutdown -r now
 ```
 
 ### Dependency

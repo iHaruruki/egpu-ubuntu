@@ -74,6 +74,56 @@ sudo update-initramfs -u
 sudo reboot
 ```
 
+### NVIDAドライバーのセットアップ
+Ubuntuのaptにリポジトリを追加し,ドライバーをインストールします
+```bash
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+ubuntu-drivers devices
+```
+<details>
+<summary>List of ubuntu-drivers devices</summary>
+```bash
+ubuntu-drivers devices
+== /sys/devices/pci0000:00/0000:00:07.2/0000:2c:00.0/0000:2d:01.0/0000:2e:00.0 ==
+modalias : pci:v000010DEd00002482sv000010DEsd0000146Abc03sc00i00
+vendor   : NVIDIA Corporation
+model    : GA104 [GeForce RTX 3070 Ti]
+driver   : nvidia-driver-580-server-open - distro non-free
+driver   : nvidia-driver-570-open - distro non-free
+driver   : nvidia-driver-580-server - distro non-free
+driver   : nvidia-driver-590-server-open - distro non-free
+driver   : nvidia-driver-470-server - distro non-free
+driver   : nvidia-driver-565-open - third-party non-free
+driver   : nvidia-driver-565 - third-party non-free
+driver   : nvidia-driver-590-server - distro non-free
+driver   : nvidia-driver-590 - distro non-free
+driver   : nvidia-driver-470 - distro non-free
+driver   : nvidia-driver-545 - distro non-free
+driver   : nvidia-driver-535-server-open - distro non-free
+driver   : nvidia-driver-535-server - distro non-free
+driver   : nvidia-driver-590-open - distro non-free
+driver   : nvidia-driver-545-open - distro non-free
+driver   : nvidia-driver-580-open - distro non-free recommended
+driver   : nvidia-driver-535-open - distro non-free
+driver   : nvidia-driver-535 - distro non-free
+driver   : nvidia-driver-570 - distro non-free
+driver   : nvidia-driver-570-server-open - distro non-free
+driver   : nvidia-driver-570-server - distro non-free
+driver   : nvidia-driver-580 - distro non-free
+driver   : xserver-xorg-video-nouveau - distro free builtin
+```
+</details>
+
+recommendedが付いているバージョンをインストールする
+```bash
+sudo apt install nvidia-driver-xxx-xxxx
+```
+再起動
+```bash
+sudo reboot
+```
+
 ### Dependency
 ```bash
 pip install numpy==1.26.4

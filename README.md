@@ -126,12 +126,13 @@ sudo reboot
 ```
 
 ### GPUの状態を確認
-<details>
-<summary>List of ubuntu-drivers devices</summary>
-
 ```bash
 nvidia-smi
 ```
+
+<details>
+<summary>nvidia-smi</summary>
+
 ```bash
 Tue Apr 21 13:56:33 2026       
 +-----------------------------------------------------------------------------------------+

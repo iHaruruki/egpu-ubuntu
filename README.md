@@ -228,6 +228,22 @@ nvcc --version
 sudo /sbin/shutdown -r now
 ```
 
+### Install NVIDIA cuDNN
+
+> [INFO]
+> CUDA Toolkit 13.0 に対応するcuDNN 9をインストールする
+> [Installing cuDNN Backend on Linux](https://docs.nvidia.com/deeplearning/cudnn/installation/latest/linux.html)
+
+1. Enable the network repository.
+2. Refresh the repository metadata.  
+```bash
+sudo apt-get update
+```
+3. Install the per-CUDA meta-packages.
+```bash
+sudo apt-get -y install cudnn9-cuda-13
+```
+
 ### Dependency
 ```bash
 pip install numpy==1.26.4

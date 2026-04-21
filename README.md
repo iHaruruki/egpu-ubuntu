@@ -1,7 +1,8 @@
 # egpu-ubuntu
 
 ## 🚀 Overview
-Install **NVIDIA Driver**, **NVIDIA CUDA TOOLKIT**, **NVIDIA cuDNN**.
+- How to Use an eGPU on Ubuntu 22.04.
+- Install **NVIDIA Driver**, **NVIDIA CUDA TOOLKIT**, **NVIDIA cuDNN**.
 
 ## 💻 Verification environment
 | Types of parts | Model number |
@@ -22,6 +23,14 @@ Install **NVIDIA Driver**, **NVIDIA CUDA TOOLKIT**, **NVIDIA cuDNN**.
 | Hardware Layer    | GPU Hardware |
 
 ## 🛠️ Setup
+
+### セキュアブートの無効化
+1. Intel NUCのBIOSへの入り方は起動時にF2キーを連打する
+2. BIOS画面で`Boot`>>`Boot/Secure Boot`と進み`Secure Boot`を**Disabled**にする
+
+### UEFIがサードバーをロードすることを許可
+1. BIOS画面で`Seurity`>>`Security Features`>>`Allow UEFI 3rd party driver loaded`にチェックを入れ有効化する
+2. Ubuntu 22.04を起動
 
 ### Dependency
 ```bash

@@ -29,8 +29,13 @@
 2. BIOS画面で`Boot`>>`Boot/Secure Boot`と進み`Secure Boot`を**Disabled**にする
 
 ### UEFIがサードバーをロードすることを許可
-1. BIOS画面で`Seurity`>>`Security Features`>>`Allow UEFI 3rd party driver loaded`にチェックを入れ有効化する
-2. Ubuntu 22.04を起動
+BIOS画面で`Seurity`>>`Security Features`>>`Allow UEFI 3rd party driver loaded`にチェックを入れ有効化する
+
+### eGPUの接続とThnderbolt 3の認証
+1. eGPUとNUCをUSB Type-Cで接続する
+2. eGPUの電源を入れる
+3. Ubuntu 22.04を起動
+
 
 ### Dependency
 ```bash

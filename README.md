@@ -31,11 +31,48 @@
 ### UEFIがサードバーをロードすることを許可
 BIOS画面で`Seurity`>>`Security Features`>>`Allow UEFI 3rd party driver loaded`にチェックを入れ有効化する
 
-### eGPUの接続とThnderbolt 3の認証
+### eGPUの接続
 1. eGPUとNUCをUSB Type-Cで接続する
 2. eGPUの電源を入れる
 3. Ubuntu 22.04を起動
 
+### Thunerbolt 3機器のuuidの確認
+boltctlコマンドでThunderbolt 3機器(Razer CoreX)のuuidを調べる
+```bash
+$ boltctl 
+ ● Razer Core X
+   ├─ type:          peripheral
+   ├─ name:          Core X
+   ├─ vendor:        Razer
+   ├─ uuid:          <uuid>
+   ├─ generation:    Thunderbolt 3
+   ├─ status:        authorized
+   │  ├─ domain:     52f78780-01ce-40ea-ffff-ffffffffffff
+   │  ├─ rx speed:   20 Gb/s = 2 lanes * 10 Gb/s
+   │  ├─ tx speed:   20 Gb/s = 2 lanes * 10 Gb/s
+   │  └─ authflags:  none
+   ├─ authorized:    xxxx
+   ├─ connected:     xxxx
+   └─ stored:        xxxx
+      ├─ policy:     iommu
+      └─ key:        no
+```
+
+### Nouveauドライバーの停止
+NVIDIAのビデオカードをLinuxに接続するとNVIDIAドライバーをリバースエンジニアリングして実装されているOSS版ドライバーNouveauドライバーが有効になります．
+```bash
+lsmod | grep nouveau
+```
+有効になっている場合，nouveau項目が表示されます．
+```bash
+sudo sh -c "echo 'blacklist nouveau' > /etc/modprobe.d/blacklist-nouveau.conf"
+sudo sh -c "echo 'options nouveau modeset=0' >> /etc/modprobe.d/blacklist-nouveau.conf"
+sudo update-initramfs -u
+```
+再起動
+```bash
+sudo reboot
+```
 
 ### Dependency
 ```bash

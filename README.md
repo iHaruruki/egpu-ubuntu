@@ -37,7 +37,7 @@ BIOS画面で`Seurity`>>`Security Features`>>`Allow UEFI 3rd party driver loaded
 3. Ubuntu 22.04を起動
 
 ### Thunerbolt 3機器のuuidの確認
-boltctlコマンドでThunderbolt 3機器(Razer CoreX)のuuidを調べる
+boltctlコマンドでThunderbolt 3機器(Razer CoreX)のuuidを調べる．
 ```bash
 $ boltctl 
  ● Razer Core X
@@ -75,7 +75,7 @@ sudo reboot
 ```
 
 ### NVIDAドライバーのセットアップ
-Ubuntuのaptにリポジトリを追加し,ドライバーをインストールします
+Ubuntuのaptにリポジトリを追加し,ドライバーをインストールします．
 ```bash
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update
@@ -116,7 +116,7 @@ driver   : xserver-xorg-video-nouveau - distro free builtin
 ```
 </details>
 
-recommendedが付いているバージョンをインストールする
+**recommended** が付いているバージョンをインストールする．
 ```bash
 sudo apt install nvidia-driver-xxx-xxxx
 ```

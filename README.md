@@ -8,7 +8,7 @@
 | Types of parts | Model number |
 | --- | --- |
 | Graphics Cards | GeForce RTX 3070 Ti |
-| eGPU | Razer core x |
+| eGPU Box | Razer Core X |
 | CPU | Intel® Core™ i7-1260P |
 | OS | Ubuntu22.04 |
 

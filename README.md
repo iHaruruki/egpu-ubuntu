@@ -244,7 +244,7 @@ sudo /sbin/shutdown -r now
 > [!TIP]
 > cuDNN provides highly tuned implementations for standard routines, 
 > such as forward and backward convolution, attention, matmul, pooling, and normalization.  
-> [NVIDIA cuDNN](https://developer.nvidia.com/cudnn)
+> [NVIDIA cuDNN](https://developer.nvidia.com/cudnn)  
 > [cuDNN 9.21.1 Downloads](https://developer.nvidia.com/cudnn-downloads)
 
 1. Install `nvidia-pyindex`  

@@ -176,7 +176,7 @@ uname -m  # アーキテクチャ（x86_64等）を確認
 lsb_release -a  # ディストリビューション名とバージョンを確認
 ```
 <details>
-<summary>nvidia-smi</summary>
+<summary>Version check</summary>
 
 ```bash
 $ uname -m

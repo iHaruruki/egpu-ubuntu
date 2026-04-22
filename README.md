@@ -243,10 +243,15 @@ sudo /sbin/shutdown -r now
 > [NVIDIA cuDNN](https://developer.nvidia.com/cudnn)
 
 > [!NOTE]
-> CUDA Toolkit 13.0 に対応するcuDNN 9をインストールする
+> CUDA Toolkit 13.0 に対応するcuDNN 9をインストールする  
 > [Installing cuDNN Backend on Linux](https://docs.nvidia.com/deeplearning/cudnn/installation/latest/linux.html)
 
+#### Installing cuDNN Backend
 1. Enable the network repository.
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+sudo apt-get -y install cudnn9-cuda-13
+```
 2. Refresh the repository metadata.  
 ```bash
 sudo apt-get update
@@ -254,6 +259,12 @@ sudo apt-get update
 3. Install the per-CUDA meta-packages.
 ```bash
 sudo apt-get -y install cudnn9-cuda-13
+```
+
+#### Installing cuDNN Frontend
+Installing the Python Frontend from pip Wheel
+```bash
+pip install nvidia_cudnn_frontend
 ```
 
 ### Dependency

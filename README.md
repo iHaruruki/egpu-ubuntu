@@ -9,10 +9,10 @@
 | --- | --- |
 | Graphics Cards | GeForce RTX 3070 Ti |
 | eGPU Box | Razer Core X |
-| CPU | Intel® Core™ i7-1260P |
+| CPU | Intel Core i7-1260P |
 | OS | Ubuntu22.04 |
 
-## :mag_right: Structure
+## 🔎 Structure
 
 | | | 
 | --- | --- |
@@ -75,7 +75,12 @@ sudo reboot
 ```
 
 ### NVIDAドライバーのセットアップ
-Ubuntuのaptにリポジトリを追加し,ドライバーをインストールします．
+Ubuntuのaptにリポジトリを追加し，ドライバーをインストールします．
+
+> [!TIP]  
+> NVIDIA Official Documentation.  
+> [NVIDIA driver](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/introduction.html)  
+
 ```bash
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update
@@ -160,6 +165,8 @@ Tue Apr 21 13:56:33 2026
 ### NVIDIA CUDA Toolkit のインストール
 
 > [!TIP]
+> NVIDIA CUDA Toolkit provides a development environment 
+> for creating high-performance, GPU-accelerated applications.  
 > NVIDIA Official Documentation.  
 > [NVIDIA CUDA Toolkit](https://developer.nvidia.com/cuda/toolkit)  
 
@@ -228,9 +235,14 @@ nvcc --version
 sudo /sbin/shutdown -r now
 ```
 
-### Install NVIDIA cuDNN
+### Install NVIDIA cuDNN (NVIDIA CUDA Deep Neural Network library)
 
-> [INFO]
+> [!TIP]
+> cuDNN provides highly tuned implementations for standard routines, 
+> such as forward and backward convolution, attention, matmul, pooling, and normalization.  
+> [NVIDIA cuDNN](https://developer.nvidia.com/cudnn)
+
+> [!NOTE]
 > CUDA Toolkit 13.0 に対応するcuDNN 9をインストールする
 > [Installing cuDNN Backend on Linux](https://docs.nvidia.com/deeplearning/cudnn/installation/latest/linux.html)
 
@@ -250,6 +262,10 @@ pip install numpy==1.26.4
 pip install --no-cache-fir torch==2.4.0 torchaudio==2.4.0 torchvision==0.19.0
 python3 -C "import torch; print('PyTorch:', torch.__version__)" # Check version (PyTorch: 2.4.0+cu121)
 ```
+
+### Uninstall
+- [Removing the Driver](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/removing-the-driver.html)
+- [Removing CUDA Toolkit](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#removing-cuda-toolkit)
 
 
 ## 👤 Authors

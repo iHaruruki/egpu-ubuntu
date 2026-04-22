@@ -235,12 +235,33 @@ nvcc --version
 sudo /sbin/shutdown -r now
 ```
 
+### What is NVIDIA CUDA-X Libraries
+[NVIDIA CUDA-X Libraries](https://developer.nvidia.com/cuda/cuda-x-libraries)
+
 ### Install NVIDIA cuDNN (NVIDIA CUDA Deep Neural Network library)
 
 > [!TIP]
 > cuDNN provides highly tuned implementations for standard routines, 
 > such as forward and backward convolution, attention, matmul, pooling, and normalization.  
 > [NVIDIA cuDNN](https://developer.nvidia.com/cudnn)
+
+1. Install `nvidia-pyindex`  
+```bash
+pip install nvidia-pyindex
+```
+2. Install `nvidia-cudnn`  
+```bash
+pip install nvidia-cudnn
+```
+
+### Install PyTorch
+> [!TIP]
+> [PyTorch](https://pytorch.org/get-started/locally/)
+
+Install torch
+```bash
+pip3 install torch torchvision  # for cuda 13.0
+```
 
 
 

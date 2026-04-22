@@ -236,7 +236,8 @@ sudo /sbin/shutdown -r now
 ```
 
 ### What is NVIDIA CUDA-X Libraries
-[NVIDIA CUDA-X Libraries](https://developer.nvidia.com/cuda/cuda-x-libraries)
+[NVIDIA CUDA-X Libraries](https://developer.nvidia.com/cuda/cuda-x-libraries)  
+
 
 ### Install NVIDIA cuDNN (NVIDIA CUDA Deep Neural Network library)
 
@@ -244,6 +245,7 @@ sudo /sbin/shutdown -r now
 > cuDNN provides highly tuned implementations for standard routines, 
 > such as forward and backward convolution, attention, matmul, pooling, and normalization.  
 > [NVIDIA cuDNN](https://developer.nvidia.com/cudnn)
+> [cuDNN 9.21.1 Downloads](https://developer.nvidia.com/cudnn-downloads)
 
 1. Install `nvidia-pyindex`  
 ```bash

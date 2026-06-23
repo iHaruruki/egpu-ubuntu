@@ -278,6 +278,11 @@ python3 -C "import torch; print('PyTorch:', torch.__version__)" # Check version 
 - [Removing the Driver](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/removing-the-driver.html)
 - [Removing CUDA Toolkit](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#removing-cuda-toolkit)
 
+## Removing CUDA Toolkit
+```bash
+sudo apt remove --purge "*cuda*" "*cublas*" "*cufft*" "*cufile*" "*curand*" "*cusolver*" "*cusparse*" "*gds-tools*" "*npp*" "*nvjpeg*" "nsight*" "*nvvm*"
+```
+
 
 ## 👤 Authors
 

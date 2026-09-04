@@ -1,5 +1,7 @@
 # egpu-ubuntu
 
+![Gitea Last Commit](https://img.shields.io/gitea/last-commit/iHaruruki/egpu-ubuntu?path=README.md)
+
 ## 🚀 Overview
 - How to Use an eGPU on Ubuntu.
 - Install **NVIDIA Driver**, **NVIDIA CUDA TOOLKIT**, **NVIDIA cuDNN**.
@@ -320,6 +322,7 @@ sudo apt remove --purge "*cuda*" "*cublas*" "*cufft*" "*cufile*" "*curand*" "*cu
 - **[iHaruruki](https://github.com/iHaruruki)** — Main author & maintainer
 
 ## 📚 References
+#### NVIDIA
 - [CUDA Toolkit 13.0 Downloads](https://developer.nvidia.com/cuda-13-0-0-download-archive)
 - [NVIDIA CUDA-X](https://www.nvidia.com/ja-jp/technologies/cuda-x/)
 - [eGPUでハイスペックLinuxデスクトップをDeep Learning Workstation化計画(eGPUセットアップ編)](https://qiita.com/y-vectorfield/items/8960c804441d2ebd605e)
@@ -328,3 +331,6 @@ sudo apt remove --purge "*cuda*" "*cublas*" "*cufft*" "*cufile*" "*curand*" "*cu
 - [GPU環境構築からyolo_rosを動かすまで その1](https://zenn.dev/nutechr/articles/2d2df996af2401)
 - [NVIDIA ドライバ、NVIDIA CUDA ツールキット 11.8、NVIDIA cuDNN 8 のインストール（Ubuntu 上）](https://www.kkaneko.jp/tools/ubuntu/ubuntu_cudnn.html)
 - [CUDA地獄ってなんだ？〜PyTorch環境構築の闘いを終わらせる完全ガイド〜](https://qiita.com/GeneLab_999/items/46eaac97fdd7a884e8d5)
+
+#### About Documents
+- [Shields.io](https://shields.io/)

@@ -171,11 +171,21 @@ Open Kernel Modules
 ```bash
 sudo apt install nvidia-open
 ```
+Proprietary Kernel Modules
+```bash
+sudo apt install cuda-drivers
+```
 
 #### Compute-only (Headless) and Desktop-only (no Compute) Installation
-Compute-only System
+##### Compute-only System
+
+Open Kernel Modules
 ```bash
 sudo apt -V install libnvidia-compute nvidia-dkms-open
+```
+Proprietary Kernel Modules
+```bash
+sudo apt -V install libnvidia-compute nvidia-dkms
 ```
 
 #### Reboot the System

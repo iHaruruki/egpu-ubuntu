@@ -76,7 +76,7 @@ sudo update-initramfs -u
 sudo reboot
 ```
 
-### NVIDIA Driver のセットアップ
+### NVIDIA Driver & NVIDIA CUDA Toolkit のセットアップ
 
 > [!TIP]  
 > NVIDIA Official Documentation.  
@@ -227,7 +227,7 @@ sudo apt -V install libnvidia-compute nvidia-dkms
 reboot
 ``` -->
 
-### NVIDIA CUDA Toolkit のインストール
+<!-- ### NVIDIA CUDA Toolkit のインストール
 
 > [!TIP]
 > NVIDIA CUDA Toolkit provides a development environment 
@@ -298,7 +298,7 @@ nvcc --version
 7. 再起動
 ```bash
 sudo /sbin/shutdown -r now
-```
+```-->
 
 ### What is NVIDIA CUDA-X Libraries
 [NVIDIA CUDA-X Libraries](https://developer.nvidia.com/cuda/cuda-x-libraries)  

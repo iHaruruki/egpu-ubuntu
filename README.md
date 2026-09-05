@@ -77,40 +77,6 @@ sudo reboot
 ```
 
 ### NVIDIA Driver のセットアップ
-Ubuntuのaptにリポジトリを追加し，ドライバーをインストールします．
-
-1. Check [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive)
-2. Select Latest Release
-3. Select Target Platform
-3. Select Target Platform  
-   - Operating System: Linux
-   - Architecture: x86_64
-   - Distribution: Ubuntu
-   - Version: 22.04
-   - Installer Type: deb(local)
-
-Installation Instructions:
-```bash
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pin
-sudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600
-wget https://developer.download.nvidia.com/compute/cuda/13.3.1/local_installers/cuda-repo-ubuntu2404-13-3-local_13.3.1-610.43.02-1_amd64.deb
-sudo dpkg -i cuda-repo-ubuntu2404-13-3-local_13.3.1-610.43.02-1_amd64.deb
-sudo cp /var/cuda-repo-ubuntu2404-13-3-local/cuda-*-keyring.gpg /usr/share/keyrings/
-sudo apt-get update
-sudo apt-get -y install cuda-toolkit-13-3
-```
-Driver Installer:
-```bash
-sudo apt-get install -y nvidia-open
-```
-Reboot
-```bash
-sudo reboot
-```
-Check
-```bash
-/usr/local/cuda/bin/nvcc -V
-```
 
 > [!TIP]  
 > NVIDIA Official Documentation.  
@@ -154,10 +120,43 @@ uname -r
 Result
 ```bash
 $ uname -r
-6.8.1-1015-realtime
+7.0.0-31-generic
 ```
 
-#### Select a driver version
+1. Check [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive)
+2. Select Latest Release
+3. Select Target Platform
+3. Select Target Platform  
+   - Operating System: Linux
+   - Architecture: x86_64
+   - Distribution: Ubuntu
+   - Version: 24.04
+   - Installer Type: deb(local)
+
+Installation Instructions:
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pin
+sudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/13.3.1/local_installers/cuda-repo-ubuntu2404-13-3-local_13.3.1-610.43.02-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2404-13-3-local_13.3.1-610.43.02-1_amd64.deb
+sudo cp /var/cuda-repo-ubuntu2404-13-3-local/cuda-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-13-3
+```
+Driver Installer:
+```bash
+sudo apt-get install -y nvidia-open
+```
+Reboot
+```bash
+sudo reboot
+```
+Check
+```bash
+/usr/local/cuda/bin/nvcc -V
+```
+
+<!-- #### Select a driver version
 
 > [!NOTE]  
 > NVIDIA DATA CENTER DOCUMENTATION  
@@ -226,7 +225,7 @@ sudo apt -V install libnvidia-compute nvidia-dkms
 #### Reboot the System
 ```bash
 reboot
-```
+``` -->
 
 ### NVIDIA CUDA Toolkit のインストール
 

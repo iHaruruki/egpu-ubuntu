@@ -1,7 +1,9 @@
 # egpu-ubuntu
 
+![Gitea Last Commit](https://img.shields.io/gitea/last-commit/iHaruruki/egpu-ubuntu?path=README.md)
+
 ## 🚀 Overview
-- How to Use an eGPU on Ubuntu 22.04.
+- How to Use an eGPU on Ubuntu.
 - Install **NVIDIA Driver**, **NVIDIA CUDA TOOLKIT**, **NVIDIA cuDNN**.
 
 ## 💻 Verification environment
@@ -9,8 +11,8 @@
 | --- | --- |
 | Graphics Cards | GeForce RTX 3070 Ti |
 | eGPU Box | Razer Core X |
-| CPU | Intel Core i7-1260P |
-| OS | Ubuntu22.04 |
+| CPU | AMD Ryzen™ 7 8845HS |
+| OS | Ubuntu24.04.4 LTS |
 
 ## 🔎 Structure
 
@@ -25,8 +27,8 @@
 ## 🛠️ Setup
 
 ### セキュアブートの無効化
-1. Intel NUCのBIOSへの入り方は起動時にF2キーを連打する
-2. BIOS画面で`Boot`>>`Boot/Secure Boot`と進み`Secure Boot`を**Disabled**にする
+1. Intel NUCのBIOSへの入り方は起動時に`Esc`キーを連打する
+2. BIOS画面で`Security`>>`Boot/Secure Boot`と進み`Secure Boot`を**Disabled**にする
 
 ### UEFIがサードバーをロードすることを許可
 BIOS画面で`Seurity`>>`Security Features`>>`Allow UEFI 3rd party driver loaded`にチェックを入れ有効化する
@@ -34,10 +36,10 @@ BIOS画面で`Seurity`>>`Security Features`>>`Allow UEFI 3rd party driver loaded
 ### eGPUの接続
 1. eGPUとNUCをUSB Type-Cで接続する
 2. eGPUの電源を入れる
-3. Ubuntu 22.04を起動
+3. NUCを起動
 
 ### Thunerbolt 3機器のuuidの確認
-boltctlコマンドでThunderbolt 3機器(Razer CoreX)のuuidを調べる．
+boltctlコマンドでThunderbolt3 機器(Razer CoreX)のuuidを調べる．
 ```bash
 $ boltctl 
  ● Razer Core X
@@ -74,95 +76,158 @@ sudo update-initramfs -u
 sudo reboot
 ```
 
-### NVIDAドライバーのセットアップ
-Ubuntuのaptにリポジトリを追加し，ドライバーをインストールします．
+### NVIDIA Driver & NVIDIA CUDA Toolkit のセットアップ
 
 > [!TIP]  
 > NVIDIA Official Documentation.  
-> [NVIDIA driver](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/introduction.html)  
+> [NVIDIA driver](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/latest/introduction.html)  
 
-```bash
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt update
-ubuntu-drivers devices
-```
-<details>
-<summary>List of ubuntu-drivers devices</summary>
+#### Linux System Requirements
+| Distribution | Codename | Architecture |
+| ------------ | -------- | ------------ |
+| Ubuntu 24.04 LTS | ubuntu2404 | amd64 | 
 
-```bash
-ubuntu-drivers devices
-== /sys/devices/pci0000:00/0000:00:07.2/0000:2c:00.0/0000:2d:01.0/0000:2e:00.0 ==
-modalias : pci:v000010DEd00002482sv000010DEsd0000146Abc03sc00i00
-vendor   : NVIDIA Corporation
-model    : GA104 [GeForce RTX 3070 Ti]
-driver   : nvidia-driver-580-server-open - distro non-free
-driver   : nvidia-driver-570-open - distro non-free
-driver   : nvidia-driver-580-server - distro non-free
-driver   : nvidia-driver-590-server-open - distro non-free
-driver   : nvidia-driver-470-server - distro non-free
-driver   : nvidia-driver-565-open - third-party non-free
-driver   : nvidia-driver-565 - third-party non-free
-driver   : nvidia-driver-590-server - distro non-free
-driver   : nvidia-driver-590 - distro non-free
-driver   : nvidia-driver-470 - distro non-free
-driver   : nvidia-driver-545 - distro non-free
-driver   : nvidia-driver-535-server-open - distro non-free
-driver   : nvidia-driver-535-server - distro non-free
-driver   : nvidia-driver-590-open - distro non-free
-driver   : nvidia-driver-545-open - distro non-free
-driver   : nvidia-driver-580-open - distro non-free recommended
-driver   : nvidia-driver-535-open - distro non-free
-driver   : nvidia-driver-535 - distro non-free
-driver   : nvidia-driver-570 - distro non-free
-driver   : nvidia-driver-570-server-open - distro non-free
-driver   : nvidia-driver-570-server - distro non-free
-driver   : nvidia-driver-580 - distro non-free
-driver   : xserver-xorg-video-nouveau - distro free builtin
-```
-</details>
+#### Verify You Have a Supported Distribution of Linux
 
-**recommended** が付いているバージョンをインストールする．
+To determine which distribution and release number you’re running, type the following at the command line:
 ```bash
-sudo apt install nvidia-driver-xxx-xxxx
+hostnamectl
 ```
-再起動
+Result
+```bash
+$ hostnamectl
+ Static hostname: nuc40
+       Icon name: computer-desktop
+         Chassis: desktop 🖥️
+      Machine ID: a657b15afa5f4e77b35166ba3a02310c
+         Boot ID: b3163103c9a643979981208766799613
+Operating System: Ubuntu 24.04.4 LTS              
+          Kernel: Linux 6.8.1-1015-realtime
+    Architecture: x86-64
+ Hardware Vendor: GMKtec
+  Hardware Model: NucBox K8 Plus
+Firmware Version: NucBox K8 Plus 1.01
+   Firmware Date: Wed 2025-02-19
+    Firmware Age: 1y 6month 2w
+```
+
+#### Verify the System has the Correct Kernel Packages Installed
+
+The version of the kernel your system is running can be found by running the following command:
+```bash
+uname -r
+```
+Result
+```bash
+$ uname -r
+7.0.0-31-generic
+```
+
+1. Check [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive)
+2. Select Latest Release
+3. Select Target Platform
+3. Select Target Platform  
+   - Operating System: Linux
+   - Architecture: x86_64
+   - Distribution: Ubuntu
+   - Version: 24.04
+   - Installer Type: deb(local)
+
+Installation Instructions:
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pin
+sudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/13.3.1/local_installers/cuda-repo-ubuntu2404-13-3-local_13.3.1-610.43.02-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2404-13-3-local_13.3.1-610.43.02-1_amd64.deb
+sudo cp /var/cuda-repo-ubuntu2404-13-3-local/cuda-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-13-3
+```
+Driver Installer:
+```bash
+sudo apt-get install -y nvidia-open
+```
+Reboot
 ```bash
 sudo reboot
 ```
-
-### GPUの状態を確認
+Check
 ```bash
-nvidia-smi
+/usr/local/cuda/bin/nvcc -V
 ```
 
-<details>
-<summary>nvidia-smi</summary>
+<!-- #### Select a driver version
 
+> [!NOTE]  
+> NVIDIA DATA CENTER DOCUMENTATION  
+> [datacenter](https://docs.nvidia.com/datacenter/tesla/index.html)  
+
+#### Choose an Installation Method 
+
+Open [Ubuntu](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/latest/ubuntu.html#ubuntu-installation) link.
+
+
+#### Preparation (Ubuntu)
+1. Perform the [Pre-installation Actions.](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/latest/pre-installation-actions.html#pre-installation-actions)  
+2. The kernel headers and development packages for the currently running kernel can be installed with:
 ```bash
-Tue Apr 21 13:56:33 2026       
-+-----------------------------------------------------------------------------------------+
-| NVIDIA-SMI 580.126.09             Driver Version: 580.126.09     CUDA Version: 13.0     |
-+-----------------------------------------+------------------------+----------------------+
-| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
-|                                         |                        |               MIG M. |
-|=========================================+========================+======================|
-|   0  NVIDIA GeForce RTX 3070 Ti     Off |   00000000:2E:00.0 Off |                  N/A |
-|  0%   32C    P8              9W /  290W |     181MiB /   8192MiB |      0%      Default |
-|                                         |                        |                  N/A |
-+-----------------------------------------+------------------------+----------------------+
-
-+-----------------------------------------------------------------------------------------+
-| Processes:                                                                              |
-|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
-|        ID   ID                                                               Usage      |
-|=========================================================================================|
-|    0   N/A  N/A            3564    C+G   ...c/gnome-remote-desktop-daemon        163MiB |
-+-----------------------------------------------------------------------------------------+
+sudo apt install linux-headers-$(uname -r)
 ```
-</details>
 
-### NVIDIA CUDA Toolkit のインストール
+#### Local Repository Enablement
+1. Download the NVIDIA driver repository: ($version:610.57.04, $distro:ubuntu2404, $arch:amd64)
+```bash
+# wget https://developer.download.nvidia.com/compute/nvidia-driver/$version/local_installers/nvidia-driver-local-repo-$distro-$version_$arch.deb
+
+wget https://developer.download.nvidia.com/compute/nvidia-driver/610.57.04/local_installers/nvidia-driver-local-repo-ubuntu2404-610.57.04_1.0-1_amd64.deb
+```
+where `$version` is the NVIDIA driver version.
+
+2. Install local repository on file system:
+```bash
+# dpkg -i nvidia-driver-local-repo-$distro-$version_$arch.deb
+sudo dpkg -i nvidia-driver-local-repo-ubuntu2404-610.57.04_1.0-1_amd64.deb
+```
+3. Enroll ephemeral public GPG key:
+```bash
+sudo cp /var/nvidia-driver-local-repo-ubuntu2404-610.57.04/nvidia-driver-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+```
+
+#### Selecting a Branch or a Specific Driver version
+```bash
+# sudo apt install nvidia-driver-pinning-<branch>
+sudo apt-get install -y nvidia-driver-pinning-610
+```
+
+#### Driver Installation
+Open Kernel Modules
+```bash
+sudo apt install nvidia-open
+```
+Proprietary Kernel Modules
+```bash
+sudo apt install cuda-drivers
+```
+
+#### Compute-only (Headless) and Desktop-only (no Compute) Installation
+##### Compute-only System
+
+Open Kernel Modules
+```bash
+sudo apt -V install libnvidia-compute nvidia-dkms-open
+```
+Proprietary Kernel Modules
+```bash
+sudo apt -V install libnvidia-compute nvidia-dkms
+```
+
+#### Reboot the System
+```bash
+reboot
+``` -->
+
+<!-- ### NVIDIA CUDA Toolkit のインストール
 
 > [!TIP]
 > NVIDIA CUDA Toolkit provides a development environment 
@@ -179,7 +244,7 @@ lsb_release -a  # ディストリビューション名とバージョンを確�
 <summary>Version check</summary>
 
 ```bash
-$ uname -m
+$ uname -mhttps://docs.nvidia.com/datacenter/tesla/index.html
 x86_64
 
 $ lsb_release -a
@@ -220,7 +285,7 @@ echo 'export CUDA_HOME=/usr/local/cuda-13.0' >> ${HOME}/.bashrc
 export LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64:${LD_LIBRARY_PATH}
 echo 'export LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64:${LD_LIBRARY_PATH}' >> ${HOME}/.bashrc
 export PATH=/usr/local/cuda-13.0/bin:${PATH}
-echo 'export PATH=/usr/local/cuda-11.8/bin:${PATH}' >> ${HOME}/.bashrc
+echo 'export PATH=/usr/local/cuda-13.0/bin:${PATH}' >> ${HOME}/.bashrc
 source ${HOME}/.bashrc
 ```
 
@@ -233,7 +298,7 @@ nvcc --version
 7. 再起動
 ```bash
 sudo /sbin/shutdown -r now
-```
+```-->
 
 ### What is NVIDIA CUDA-X Libraries
 [NVIDIA CUDA-X Libraries](https://developer.nvidia.com/cuda/cuda-x-libraries)  
@@ -241,7 +306,10 @@ sudo /sbin/shutdown -r now
 
 ### Install NVIDIA cuDNN (NVIDIA CUDA Deep Neural Network library)
 
-> [!TIP]
+> [!NOTE]
+> Check [cuDNN 9.24.1 Downloads](https://developer.nvidia.com/cudnn-downloads)
+
+<!-- > [!TIP]
 > cuDNN provides highly tuned implementations for standard routines, 
 > such as forward and backward convolution, attention, matmul, pooling, and normalization.  
 > [NVIDIA cuDNN](https://developer.nvidia.com/cudnn)  
@@ -281,12 +349,18 @@ nvtop
 - [Removing the Driver](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/removing-the-driver.html)
 - [Removing CUDA Toolkit](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#removing-cuda-toolkit)
 
+## Removing CUDA Toolkit
+```bash
+sudo apt remove --purge "*cuda*" "*cublas*" "*cufft*" "*cufile*" "*curand*" "*cusolver*" "*cusparse*" "*gds-tools*" "*npp*" "*nvjpeg*" "nsight*" "*nvvm*"
+```
+
 
 ## 👤 Authors
 
 - **[iHaruruki](https://github.com/iHaruruki)** — Main author & maintainer
 
 ## 📚 References
+#### NVIDIA
 - [CUDA Toolkit 13.0 Downloads](https://developer.nvidia.com/cuda-13-0-0-download-archive)
 - [NVIDIA CUDA-X](https://www.nvidia.com/ja-jp/technologies/cuda-x/)
 - [eGPUでハイスペックLinuxデスクトップをDeep Learning Workstation化計画(eGPUセットアップ編)](https://qiita.com/y-vectorfield/items/8960c804441d2ebd605e)

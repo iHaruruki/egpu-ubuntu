@@ -28,7 +28,7 @@
 
 ### セキュアブートの無効化
 1. Intel NUCのBIOSへの入り方は起動時に`Esc`キーを連打する
-2. BIOS画面で`Boot`>>`Boot/Secure Boot`と進み`Secure Boot`を**Disabled**にする
+2. BIOS画面で`Security`>>`Boot/Secure Boot`と進み`Secure Boot`を**Disabled**にする
 
 ### UEFIがサードバーをロードすることを許可
 BIOS画面で`Seurity`>>`Security Features`>>`Allow UEFI 3rd party driver loaded`にチェックを入れ有効化する

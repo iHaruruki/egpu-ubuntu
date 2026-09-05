@@ -306,7 +306,10 @@ sudo /sbin/shutdown -r now
 
 ### Install NVIDIA cuDNN (NVIDIA CUDA Deep Neural Network library)
 
-> [!TIP]
+> [!NOTE]
+> Check [cuDNN 9.24.1 Downloads](https://developer.nvidia.com/cudnn-downloads)
+
+<!-- > [!TIP]
 > cuDNN provides highly tuned implementations for standard routines, 
 > such as forward and backward convolution, attention, matmul, pooling, and normalization.  
 > [NVIDIA cuDNN](https://developer.nvidia.com/cudnn)  
@@ -328,7 +331,7 @@ pip install nvidia-cudnn
 Install torch
 ```bash
 pip3 install torch torchvision  # for cuda 13.0
-```
+``` -->
 
 
 

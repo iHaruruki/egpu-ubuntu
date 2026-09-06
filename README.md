@@ -1,22 +1,23 @@
 # egpu-ubuntu
 
-![Gitea Last Commit](https://img.shields.io/gitea/last-commit/iHaruruki/egpu-ubuntu?path=README.md)
+![Gitea Last Commit](https://img.shields.io/gitea/last-commit/iHaruruki/egpu-ubuntu/)
 
 ## 🚀 Overview
 - How to Use an eGPU on Ubuntu.
 - Install **NVIDIA Driver**, **NVIDIA CUDA TOOLKIT**, **NVIDIA cuDNN**.
 
 > [!IMPORTANT]
-> 本ドキュメントで記載される情報は，可能な限り正確の情報であるように努めますが，必ずしも正確性を保証することはできません．誤情報が含まれる可能性があるため，必ずNVIDIAの公式ドキュメントを確認するようにしてください．
+> 本ドキュメントで記載される情報は，可能な限り正確の情報であるように努めますが，必ずしも正確性を保証することはできません．誤情報が含まれる可能性があるため，必ずNVIDIAの公式ドキュメントを確認するようにしてください．  
+> Be sure to check NVIDIA's official documentation.
 
 ## 💻 Verification environment
 | Types of parts | Model number |
 | --- | --- |
 | Graphics Cards | GeForce RTX 3070 Ti |
 | eGPU Box | Razer Core X |
-| Device | GMKtec K8 Plus |
+| PC | GMKtec K8 Plus |
 | CPU | AMD Ryzen™ 7 8845HS |
-| OS | Ubuntu24.04.4 LTS |
+| OS | Ubuntu 24.04.4 LTS |
 
 ## 🔎 Structure
 
@@ -27,6 +28,11 @@
 | Runtime Layer     | CUDA Toolkit |
 | Driver Layer      | NVIDIA Driver |
 | Hardware Layer    | GPU Hardware |
+
+## Install version
+
+- CUDA Toolkit: 13.3
+- cuDNN: 9.24.1
 
 ## 🛠️ Setup
 
@@ -160,197 +166,24 @@ Check
 /usr/local/cuda/bin/nvcc -V
 ```
 
-<!-- #### Select a driver version
-
-> [!NOTE]  
-> NVIDIA DATA CENTER DOCUMENTATION  
-> [datacenter](https://docs.nvidia.com/datacenter/tesla/index.html)  
-
-#### Choose an Installation Method 
-
-Open [Ubuntu](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/latest/ubuntu.html#ubuntu-installation) link.
-
-
-#### Preparation (Ubuntu)
-1. Perform the [Pre-installation Actions.](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/latest/pre-installation-actions.html#pre-installation-actions)  
-2. The kernel headers and development packages for the currently running kernel can be installed with:
-```bash
-sudo apt install linux-headers-$(uname -r)
-```
-
-#### Local Repository Enablement
-1. Download the NVIDIA driver repository: ($version:610.57.04, $distro:ubuntu2404, $arch:amd64)
-```bash
-# wget https://developer.download.nvidia.com/compute/nvidia-driver/$version/local_installers/nvidia-driver-local-repo-$distro-$version_$arch.deb
-
-wget https://developer.download.nvidia.com/compute/nvidia-driver/610.57.04/local_installers/nvidia-driver-local-repo-ubuntu2404-610.57.04_1.0-1_amd64.deb
-```
-where `$version` is the NVIDIA driver version.
-
-2. Install local repository on file system:
-```bash
-# dpkg -i nvidia-driver-local-repo-$distro-$version_$arch.deb
-sudo dpkg -i nvidia-driver-local-repo-ubuntu2404-610.57.04_1.0-1_amd64.deb
-```
-3. Enroll ephemeral public GPG key:
-```bash
-sudo cp /var/nvidia-driver-local-repo-ubuntu2404-610.57.04/nvidia-driver-*-keyring.gpg /usr/share/keyrings/
-sudo apt-get update
-```
-
-#### Selecting a Branch or a Specific Driver version
-```bash
-# sudo apt install nvidia-driver-pinning-<branch>
-sudo apt-get install -y nvidia-driver-pinning-610
-```
-
-#### Driver Installation
-Open Kernel Modules
-```bash
-sudo apt install nvidia-open
-```
-Proprietary Kernel Modules
-```bash
-sudo apt install cuda-drivers
-```
-
-#### Compute-only (Headless) and Desktop-only (no Compute) Installation
-##### Compute-only System
-
-Open Kernel Modules
-```bash
-sudo apt -V install libnvidia-compute nvidia-dkms-open
-```
-Proprietary Kernel Modules
-```bash
-sudo apt -V install libnvidia-compute nvidia-dkms
-```
-
-#### Reboot the System
-```bash
-reboot
-``` -->
-
-<!-- ### NVIDIA CUDA Toolkit のインストール
+### Install NVIDIA CUDA-X Libraries
 
 > [!TIP]
-> NVIDIA CUDA Toolkit provides a development environment 
-> for creating high-performance, GPU-accelerated applications.  
-> NVIDIA Official Documentation.  
-> [NVIDIA CUDA Toolkit](https://developer.nvidia.com/cuda/toolkit)  
+> NVIDIA CUDA-X is a comprehensive collection of highly optimized, domain-specific libraries, frameworks, and microservices built on top of the core NVIDIA CUDA parallel computing platform.  
+> [NVIDIA CUDA-X Libraries](https://developer.nvidia.com/cuda/cuda-x-libraries)  
 
-1. Ubuntuのバージョンを確認
-```bash
-uname -m  # アーキテクチャ（x86_64等）を確認
-lsb_release -a  # ディストリビューション名とバージョンを確認
-```
-<details>
-<summary>Version check</summary>
-
-```bash
-$ uname -mhttps://docs.nvidia.com/datacenter/tesla/index.html
-x86_64
-
-$ lsb_release -a
-No LSB modules are available.
-Distributor ID:	Ubuntu
-Description:	Ubuntu 22.04.5 LTS
-Release:	22.04
-Codename:	jammy
-```
-</details>
-
-2. CUDA Toolkit 13.0 Downloads  
-Open link. [CUDA Toolkit 13.0 Downloads](https://developer.nvidia.com/cuda-13-0-0-download-archive)
-
-3. Select Target Platform  
-- Operating System: Linux
-- Architecture: x86_64
-- Distribution: Ubuntu
-- Version: 22.04
-- Installer Type: deb(local)
-
-4. Install
-Installation Instructions:
-```bash
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
-sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
-wget https://developer.download.nvidia.com/compute/cuda/13.0.0/local_installers/cuda-repo-ubuntu2204-13-0-local_13.0.0-580.65.06-1_amd64.deb
-sudo dpkg -i cuda-repo-ubuntu2204-13-0-local_13.0.0-580.65.06-1_amd64.deb
-sudo cp /var/cuda-repo-ubuntu2204-13-0-local/cuda-*-keyring.gpg /usr/share/keyrings/
-sudo apt-get update
-sudo apt-get -y install cuda-toolkit-13-0
-```
-
-5. 環境変数の設定
-```bash
-export CUDA_HOME=/usr/local/cuda-13.0
-echo 'export CUDA_HOME=/usr/local/cuda-13.0' >> ${HOME}/.bashrc
-export LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64:${LD_LIBRARY_PATH}
-echo 'export LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64:${LD_LIBRARY_PATH}' >> ${HOME}/.bashrc
-export PATH=/usr/local/cuda-13.0/bin:${PATH}
-echo 'export PATH=/usr/local/cuda-13.0/bin:${PATH}' >> ${HOME}/.bashrc
-source ${HOME}/.bashrc
-```
-
-6. インストールと設定の確認
-```bash
-cat /usr/local/cuda-13.0/version.json
-nvcc --version
-```
-
-7. 再起動
-```bash
-sudo /sbin/shutdown -r now
-```-->
-
-### What is NVIDIA CUDA-X Libraries
-[NVIDIA CUDA-X Libraries](https://developer.nvidia.com/cuda/cuda-x-libraries)  
-
-
-### Install NVIDIA cuDNN (NVIDIA CUDA Deep Neural Network library)
+#### Install NVIDIA cuDNN (NVIDIA CUDA Deep Neural Network library)
 
 > [!NOTE]
 > Check [cuDNN 9.24.1 Downloads](https://developer.nvidia.com/cudnn-downloads)
 
-<!-- > [!TIP]
-> cuDNN provides highly tuned implementations for standard routines, 
-> such as forward and backward convolution, attention, matmul, pooling, and normalization.  
-> [NVIDIA cuDNN](https://developer.nvidia.com/cudnn)  
-> [cuDNN 9.21.1 Downloads](https://developer.nvidia.com/cudnn-downloads)
+## Uninstall
 
-1. Install `nvidia-pyindex`  
-```bash
-pip install nvidia-pyindex
-```
-2. Install `nvidia-cudnn`  
-```bash
-pip install nvidia-cudnn
-```
-
-### Install PyTorch
-> [!TIP]
-> [PyTorch](https://pytorch.org/get-started/locally/)
-
-Install torch
-```bash
-pip3 install torch torchvision  # for cuda 13.0
-``` -->
-
-
-
-### Dependency
-```bash
-pip install numpy==1.26.4
-pip install --no-cache-fir torch==2.4.0 torchaudio==2.4.0 torchvision==0.19.0
-python3 -C "import torch; print('PyTorch:', torch.__version__)" # Check version (PyTorch: 2.4.0+cu121)
-```
-
-### Uninstall
 - [Removing the Driver](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/removing-the-driver.html)
 - [Removing CUDA Toolkit](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#removing-cuda-toolkit)
 
 ## Removing CUDA Toolkit
+
 ```bash
 sudo apt remove --purge "*cuda*" "*cublas*" "*cufft*" "*cufile*" "*curand*" "*cusolver*" "*cusparse*" "*gds-tools*" "*npp*" "*nvjpeg*" "nsight*" "*nvvm*"
 ```
@@ -363,7 +196,8 @@ sudo apt remove --purge "*cuda*" "*cublas*" "*cufft*" "*cufile*" "*curand*" "*cu
 ## 📚 References
 参考にさせていただいたサイトの一覧．
 
-#### NVIDIA
+**NVIDIA**
+
 - [CUDA Toolkit 13.0 Downloads](https://developer.nvidia.com/cuda-13-0-0-download-archive)
 - [NVIDIA CUDA-X](https://www.nvidia.com/ja-jp/technologies/cuda-x/)
 - [eGPUでハイスペックLinuxデスクトップをDeep Learning Workstation化計画(eGPUセットアップ編)](https://qiita.com/y-vectorfield/items/8960c804441d2ebd605e)
@@ -373,5 +207,6 @@ sudo apt remove --purge "*cuda*" "*cublas*" "*cufft*" "*cufile*" "*curand*" "*cu
 - [NVIDIA ドライバ、NVIDIA CUDA ツールキット 11.8、NVIDIA cuDNN 8 のインストール（Ubuntu 上）](https://www.kkaneko.jp/tools/ubuntu/ubuntu_cudnn.html)
 - [CUDA地獄ってなんだ？〜PyTorch環境構築の闘いを終わらせる完全ガイド〜](https://qiita.com/GeneLab_999/items/46eaac97fdd7a884e8d5)
 
-#### About Documents
+**About Documents**
+
 - [Shields.io](https://shields.io/)

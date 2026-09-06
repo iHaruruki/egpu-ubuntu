@@ -17,8 +17,6 @@
 
 ## 🔎 Structure
 
-| | | 
-| --- | --- |
 | Application Layer | PyTorch / TensorFlow |
 | Library Layer     | cuDNN / cuBLAS / TensorRT |
 | Runtime Layer     | CUDA Toolkit |
@@ -28,7 +26,7 @@
 ## 🛠️ Setup
 
 ### セキュアブートの無効化
-1. Intel NUCのBIOSへの入り方は起動時に`Esc`キーを連打する
+1. GMKtec K8 PlusのBIOSへの入り方は起動時に`Esc`キーを連打する
 2. BIOS画面で`Security`>>`Boot/Secure Boot`と進み`Secure Boot`を**Disabled**にする
 
 ### UEFIがサードバーをロードすることを許可

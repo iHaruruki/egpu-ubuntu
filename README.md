@@ -7,7 +7,7 @@
 - Install **NVIDIA Driver**, **NVIDIA CUDA TOOLKIT**, **NVIDIA cuDNN**.
 
 > [!IMPORTANT]
-> 本ドキュメントで記載される情報は，可能な限り正確の情報であるように努めますが，必ずしも正確性を保証することはできません．誤情報が含まれる可能性があるため，必ず[NVIDIAの公式ドキュメント]()を確認するようにしてください．
+> 本ドキュメントで記載される情報は，可能な限り正確の情報であるように努めますが，必ずしも正確性を保証することはできません．誤情報が含まれる可能性があるため，必ずNVIDIAの公式ドキュメントを確認するようにしてください．
 
 ## 💻 Verification environment
 | Types of parts | Model number |

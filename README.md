@@ -20,6 +20,8 @@
 
 ## 🔎 Structure
 
+| Layer | Library |
+| --- | --- |
 | Application Layer | PyTorch / TensorFlow |
 | Library Layer     | cuDNN / cuBLAS / TensorRT |
 | Runtime Layer     | CUDA Toolkit |

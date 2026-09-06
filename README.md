@@ -1,7 +1,5 @@
 # egpu-ubuntu
 
-![Gitea Last Commit](https://img.shields.io/gitea/last-commit/iHaruruki/egpu-ubuntu/)
-
 ## 🚀 Overview
 - How to Use an eGPU on Ubuntu.
 - Install **NVIDIA Driver**, **NVIDIA CUDA TOOLKIT**, **NVIDIA cuDNN**.
@@ -174,8 +172,31 @@ Check
 
 #### Install NVIDIA cuDNN (NVIDIA CUDA Deep Neural Network library)
 
+1. Check [cuDNN 9.24.1 Downloads](https://developer.nvidia.com/cudnn-downloads)
+2. Select Target Platform  
+   - Operating System: Linux
+   - Architecture: x86_64
+   - Distribution: Ubuntu
+   - Version: 24.04
+   - Installer Type: deb(local)
+   - Configuration: FULL
+
+Installation Instructions:
+```bash
+wget https://developer.download.nvidia.com/compute/cudnn/9.24.1/local_installers/cudnn-local-repo-ubuntu2404-9.24.1_1.0-1_amd64.deb
+sudo dpkg -i cudnn-local-repo-ubuntu2404-9.24.1_1.0-1_amd64.deb
+sudo cp /var/cudnn-local-repo-ubuntu2404-9.24.1/cudnn-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install cudnn
+```
+
+To install for CUDA 13, perform the above configuration but install the CUDA 13 specific package:
+```bash
+sudo apt-get -y install cudnn9-cuda-13
+```
+
 > [!NOTE]
-> Check [cuDNN 9.24.1 Downloads](https://developer.nvidia.com/cudnn-downloads)
+> Check [NVIDIA cuDNN](https://docs.nvidia.com/deeplearning/cudnn/latest/)
 
 ## Uninstall
 

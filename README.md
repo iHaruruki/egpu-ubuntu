@@ -6,6 +6,9 @@
 - How to Use an eGPU on Ubuntu.
 - Install **NVIDIA Driver**, **NVIDIA CUDA TOOLKIT**, **NVIDIA cuDNN**.
 
+> [!IMPORTANT]
+> 本ドキュメントで記載される情報は，可能な限り正確の情報であるように努めますが，必ずしも正確性を保証することはできません．誤情報が含まれる可能性があるため，必ず[NVIDIAの公式ドキュメント]()を確認するようにしてください．
+
 ## 💻 Verification environment
 | Types of parts | Model number |
 | --- | --- |
@@ -356,6 +359,8 @@ sudo apt remove --purge "*cuda*" "*cublas*" "*cufft*" "*cufile*" "*curand*" "*cu
 - **[iHaruruki](https://github.com/iHaruruki)** — Main author & maintainer
 
 ## 📚 References
+参考にさせていただいたサイトの一覧．
+
 #### NVIDIA
 - [CUDA Toolkit 13.0 Downloads](https://developer.nvidia.com/cuda-13-0-0-download-archive)
 - [NVIDIA CUDA-X](https://www.nvidia.com/ja-jp/technologies/cuda-x/)

@@ -11,6 +11,7 @@
 | --- | --- |
 | Graphics Cards | GeForce RTX 3070 Ti |
 | eGPU Box | Razer Core X |
+| Device | GMKtec K8 Plus |
 | CPU | AMD Ryzen™ 7 8845HS |
 | OS | Ubuntu24.04.4 LTS |
 

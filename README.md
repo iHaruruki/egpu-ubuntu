@@ -29,6 +29,7 @@
 
 ## Install version
 
+- Driver: 610.43.02
 - CUDA Toolkit: 13.3
 - cuDNN: 9.24.1
 

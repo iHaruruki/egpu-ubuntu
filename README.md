@@ -39,12 +39,14 @@
 1. GMKtec K8 PlusのBIOSへの入り方は起動時に`Esc`キーを連打する
 2. BIOS画面で`Security`と進み`Secure Boot`を**Disabled**にする
 3. BIOS画面で`Advanced`と進み`PCI Subsystem Settings`
+
 | 設定項目 | 値 |
 | --- | --- |
 | Above 4G Decoding | Enabled | 
 | Re-Size BAR Support | Enabled |
 | SR-IOV Support | Enabled |
 | IOMMU | Enabled |
+
 4. BIOS画面で`Advanced` >> `AMD CBS`と進み`IOMMU`を**Enabled**にする
 
 ### UEFIがサードバーをロードすることを許可

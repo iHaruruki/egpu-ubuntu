@@ -85,6 +85,15 @@ sudo update-initramfs -u
 sudo reboot
 ```
 
+### Update kernel
+```bash
+sudo apt install linux-image-generic-hwe-24.04
+```
+再起動
+```bash
+sudo reboot
+```
+
 ### NVIDIA Driver & NVIDIA CUDA Toolkit のセットアップ
 
 > [!TIP]  

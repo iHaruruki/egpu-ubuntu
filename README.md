@@ -35,7 +35,7 @@
 
 ## 🛠️ Setup
 
-### セキュアブートの無効化
+### BISO settings
 1. GMKtec K8 PlusのBIOSへの入り方は起動時に`Esc`キーを連打する
 2. BIOS画面で`Security`と進み`Secure Boot`を**Disabled**にする
 3. BIOS画面で`Advanced`と進み`PCI Subsystem Settings`
